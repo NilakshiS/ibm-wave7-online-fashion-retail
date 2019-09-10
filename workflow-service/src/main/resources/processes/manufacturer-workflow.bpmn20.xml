@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1m0strk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="5.0.4">
-  <bpmn:process id="user_service_workflow" isExecutable="true" name="user_service_workflow">
+  <bpmn:process id="manufacturer_workflow" isExecutable="true" name="manufacturer_workflow">
     <bpmn:startEvent id="StartEvent_130ppdv" name="Start">
       <bpmn:outgoing>SequenceFlow_1rou255</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:endEvent id="EndEvent_0xx5aau" name="End">
       <bpmn:incoming>SequenceFlow_0msbmt9</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:userTask id="Task_0ihk9u0" name="Register User">
+    <bpmn:userTask id="Task_0ihk9u0" name="Add Baseprice">
       <bpmn:incoming>SequenceFlow_1rou255</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0msbmt9</bpmn:outgoing>
       <bpmn:potentialOwner>
@@ -20,7 +20,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0msbmt9" sourceRef="Task_0ihk9u0" targetRef="EndEvent_0xx5aau" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="user_service_workflow">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="manufacturer_workflow">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_130ppdv">
         <dc:Bounds x="192" y="81" width="36" height="36" />
         <bpmndi:BPMNLabel>

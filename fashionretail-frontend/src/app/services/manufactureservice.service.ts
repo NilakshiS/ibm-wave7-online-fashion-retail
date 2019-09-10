@@ -36,7 +36,8 @@ export class ManufactureserviceService {
  }
  saveBasePrice(baseprice:BasePrice):Observable<BasePrice>
  {
-  const url="http://localhost:8090/baseprice";
+  // const url="http://localhost:8090/baseprice";
+  const url = "http://localhost:8194/activiti/manufacturer";
   // const updateUrl=`${url}/5`
  return this.httpClient.post<BasePrice>(url,baseprice,httpOptions);
  }

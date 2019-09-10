@@ -30,11 +30,11 @@ import java.util.List;
 @RequestMapping("activiti")
 public class WorkflowController {
 
-    private String DESIGNER_IP = "localhost";
-    private String SUPPLIER_IP = "localhost";
-    private String USER_IP = "localhost";
-    private String MANUFACTURER_IP = "localhost";
-    private String CONSUMER_IP = "";
+    private String DESIGNER_IP = "localhost:8187";
+    private String SUPPLIER_IP = "localhost:8188";
+    private String USER_IP = "localhost:8192";
+    private String MANUFACTURER_IP = "localhost:8189";
+    private String CONSUMER_IP = "localhost";
 
     private Logger logger = LoggerFactory.getLogger(WorkflowController.class);
 
@@ -67,7 +67,7 @@ public class WorkflowController {
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + DESIGNER_IP + ":8197/designs";
+        String fooResourceUrl = "http://" + DESIGNER_IP + "/designs";
         logger.info("url: "+fooResourceUrl);
 
         //store response in a ResponseEntity
@@ -106,7 +106,7 @@ public class WorkflowController {
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + SUPPLIER_IP + ":8188/material";
+        String fooResourceUrl = "http://" + SUPPLIER_IP + "/api/v2/material";
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(mapping, headers);
@@ -125,16 +125,16 @@ public class WorkflowController {
         return responseEntity;
     }
 
-    @GetMapping("register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        String id = claimTask("Register User");
+    @PostMapping("manufacturer")
+    public ResponseEntity<?> addBasePrice(@RequestBody BasePrice basePrice) {
+        String id = claimTask("Add Baseprice");
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + USER_IP + ":8088/user";
+        String fooResourceUrl = "http://" + MANUFACTURER_IP + "/api/v1/baseprice";
 
         //store response in a ResponseEntity
-        entity = new HttpEntity<>(user, headers);
+        entity = new HttpEntity<>(basePrice, headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(
                 fooResourceUrl,
                 HttpMethod.POST,
@@ -144,7 +144,7 @@ public class WorkflowController {
         logger.info("> response: " + responseEntity);
         // Let's complete the task
         completeTask(id);
-        startProcess("user_service_workflow");
+        startProcess("manufacturer_workflow");
         return responseEntity;
     }
 
