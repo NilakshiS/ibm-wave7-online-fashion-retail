@@ -30,10 +30,10 @@ import java.util.List;
 @RequestMapping("activiti")
 public class WorkflowController {
 
-    private String DESIGNER_IP = "172.23.238.222";
-    private String SUPPLIER_IP = "172.23.238.218";
-    private String USER_IP = "172.23.238.222";
-    private String MANUFACTURER_IP = "";
+    private String DESIGNER_IP = "localhost";
+    private String SUPPLIER_IP = "localhost";
+    private String USER_IP = "localhost";
+    private String MANUFACTURER_IP = "localhost";
     private String CONSUMER_IP = "";
 
     private Logger logger = LoggerFactory.getLogger(WorkflowController.class);
@@ -67,7 +67,7 @@ public class WorkflowController {
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + DESIGNER_IP + ":8080/designs";
+        String fooResourceUrl = "http://" + DESIGNER_IP + ":8197/designs";
         logger.info("url: "+fooResourceUrl);
 
         //store response in a ResponseEntity
@@ -106,7 +106,7 @@ public class WorkflowController {
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + SUPPLIER_IP + ":8089/material";
+        String fooResourceUrl = "http://" + SUPPLIER_IP + ":8188/material";
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(mapping, headers);
