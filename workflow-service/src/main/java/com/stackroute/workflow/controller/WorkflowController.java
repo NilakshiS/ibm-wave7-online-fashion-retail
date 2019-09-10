@@ -102,7 +102,7 @@ public class WorkflowController {
 
     @PostMapping("add-material")
     public ResponseEntity<?> addMaterial(@RequestBody Mapping mapping) {
-        String id = claimTask("Add a Material");
+        String id = claimTask("Add Material");
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
