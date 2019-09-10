@@ -236,4 +236,3 @@ services:
       - 4201:4201
     healthcheck:
       test: "exit 0"
-
